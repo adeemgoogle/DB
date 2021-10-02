@@ -21,7 +21,7 @@ SELECT course_id from prereq where prereq_id='CS-101';
 --task 2A
 SELECT dept_name, avg(salary) from instructor group by dept_name order by avg(salary) asc;
 
--- task2 B ???????/
+-- task2 B ???????
 SELECT building from classroom group by building order by max(capacity) desc ;
 
 -- task 2 C Д нету
@@ -29,8 +29,8 @@ SELECT building from classroom group by building order by max(capacity) desc ;
 -- task 2 e
 SELECT name from instructor where dept_name='Biology' or dept_name='Philosophy' or dept_name='Music';
 -- task 2 f
-
-SELECT name from instructor where id in (Select id from teaches where year='2017');
+select id, name from instructor where id in (Select id from teaches where year='2018')
+                                  and id not in (Select id from teaches where year='2017');
 
 -- task 3 A
 SELECT name from student where dept_name = 'Comp. Sci.' and id in(Select id from takes
