@@ -37,7 +37,13 @@ SELECT name from student where dept_name = 'Comp. Sci.' and id in(Select id from
     where grade='A' or grade='-A' and course_id='CS-101' or course_id='CS-190'or course_id='CS-315' or
           course_id='CS-319' or course_id='CS-347') order by name asc ;
 --task 3 B
-SELECT DISTINCT name from student,takes, advisor  where student.id = advisor.s_id not in (grade='A' or grade='A-' or grade='B+' or grade='B');
+SELECT id, name FROM instructor WHERE id in
+                                      ( SELECT i_id FROM advisor WHERE s_id in
+                                      ( SELECT id FROM takes WHERE grade = 'B-'
+                                                                or grade = 'C+'
+                                                                or grade = 'C'
+                                                                or grade = 'C-'
+                                                                or grade = 'F') );
 
 --task 3C D нет
 
