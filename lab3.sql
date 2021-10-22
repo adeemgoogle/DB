@@ -22,7 +22,7 @@ SELECT course_id from prereq where prereq_id='CS-101';
 SELECT dept_name, avg(salary) from instructor group by dept_name order by avg(salary) asc;
 
 -- task2 B ???????
-SELECT building from classroom group by building order by max(capacity) desc ;
+SELECT building from classroom group by building order by max(capacity) desc;
 
 -- task 2 C Д нету
 
