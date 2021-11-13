@@ -47,7 +47,7 @@ create view puurch as
 -- 2 task B
 create view top_5 as
     select sum(amount), date from sell
-    group by date order by sum desc
+    group by date order by sum(amount) desc
     limit 5;
 
 -- 2 task C
