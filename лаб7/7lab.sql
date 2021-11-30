@@ -32,7 +32,7 @@ revoke SELECT, UPDATE on customers from "Kira";
 revoke Insert on accounts,transactions from "Kirontik";
 
 --5 task
-CREATE UNIQUE INDEX curr on accounts(currency, account_id);
+CREATE UNIQUE INDEX curr on accounts(currency, account_id, customer_id);
 create index checkk on accounts(currency,balance);
 
 --6 task
