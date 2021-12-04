@@ -84,6 +84,8 @@ create trigger today_1
     execute procedure timest();
 insert into people(id, name) values (9, 'Adema');
 update people set name = 'Ademma' where name = 'Adema';
+update people set name = 'Likqqq' where name = 'Lik';
+insert into people(id, name) values (22, 'Erka');
 
 -- B
 create or replace FUNCTION age()
@@ -100,6 +102,8 @@ language 'plpgsql';
 create trigger neewagee after insert on people
     for each row execute procedure age();
 insert into people(id, name, birthday)  values (11, 'Lima', '09-08-2002');
+insert into people(id, name, birthday) values (12, 'Era', '02-08-1991');
+insert into people(id, name, birthday) values (13, 'Lik' ,'03-12-1990');
 
 -- c
 CREATE table product(
@@ -125,13 +129,12 @@ create trigger cost after insert on product
 insert into product(id, name_of_prod,price) values (1, 'milk', 200);
 
 insert into product(id,name_of_prod,price) values (3, 'cheese', 223);
-
-
+insert into product(id,name_of_prod,price) values (4, 'rice', 200);
 -- d
 create or replace function stop_del() returns trigger language plpgsql
     as $$
     begin
-        insert into product(id,name_of_prod,price) values(old.id,old.name,old.price);
+        insert into product(id,name_of_prod,price) values(old.id,old.name_of_prod,old.price);
         return old;
     end;
     $$;
@@ -142,6 +145,7 @@ create trigger del_changes
     for each row
     execute procedure stop_del();
 delete from product where id=2;
+delete from product where id = 1;
 select * from product;
 -- E
 
